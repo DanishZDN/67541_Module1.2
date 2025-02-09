@@ -22,7 +22,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -52,6 +54,8 @@ import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Surface
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -147,11 +151,32 @@ fun FavoriteCollectionCard(
 }
 
 // Step: Align your body row - Arrangements
+//@Composable
+//fun AlignYourBodyRow(
+//    modifier: Modifier = Modifier
+//) {
+//    LazyRow(
+//        modifier = modifier
+//    ) {
+//        items(alignYourBodyData) { item ->
+//            AlignYourBodyElement(item.drawable, item.text)
+//        }
+//    }
+//}
+//coba lazyrowar
 @Composable
 fun AlignYourBodyRow(
     modifier: Modifier = Modifier
 ) {
-    // Implement composable here
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        modifier = modifier
+    ) {
+        items(alignYourBodyData) { item ->
+            AlignYourBodyElement(item.drawable, item.text)
+        }
+    }
 }
 
 // Step: Favorite collections grid - LazyGrid
